@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Noxa Store · Daftar Bahasa Pemrograman</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #0a0f1a, #03060c);
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Roboto', sans-serif;
+            padding: 1.5rem;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            transition: background 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* 6 tema warna neon */
+        body.theme-green {
+            background: radial-gradient(circle at 30% 20%, #064e3b, #022c22);
+        }
+
+        body.theme-blue {
+            background: radial-gradient(circle at 70% 40%, #1e3a8a, #0f172a);
+        }
+
+        body.theme-cyan {
+            background: radial-gradient(circle at 50% 70%, #0e7490, #164e63);
+        }
+
+        body.theme-purple {
+            background: radial-gradient(circle at 60% 30%, #7e22ce, #4c1d95);
+        }
+
+        body.theme-pink {
+            background: radial-gradient(circle at 40% 60%, #be185d, #831843);
+        }
+
+        body.theme-orange {
+            background: radial-gradient(circle at 80% 50%, #c2410c, #7c2d12);
+        }
+
+        .app-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* HEADER */
+        .top-brand-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .noxa-store {
+            font-size: clamp(1.5rem, 5vw, 2.8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
+            white-space: nowrap;
+            animation: softPulse 2s infinite alternate;
+        }
+
+        @keyframes softPulse {
+            0% {
+                text-shadow: 0 0 4px #10b981;
+                opacity: 0.95;
+            }
+
+            100% {
+                text-shadow: 0 0 18px #10b981;
+                opacity: 1;
+            }
+        }
+
+        .judul-web-kanan h1 {
+            font-size: clamp(1rem, 3.5vw, 1.6rem);
+            font-weight: 700;
+            background: linear-gradient(120deg, #f9f3c1, #a7f3d0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: right;
+        }
+
+        .judul-web-kanan p {
+            font-size: 0.65rem;
+            color: #ddd;
+            text-align: right;
+        }
+
+        /* BARIS STATS + SEARCH */
+        .top-stats-search {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .total-stats-box {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+        }
+
+        .total-stats-box span {
+            font-size: 0.8rem;
+            color: white;
+            background: rgba(16, 185, 129, 0.2);
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+        }
+
+        .total-stats-box span strong {
+            color: #10b981;
+        }
+
+        /* SEARCH */
+        .search-section {
+            max-width: 600px;
+            margin: 0;
+        }
+
+        .search-row-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .search-wrapper {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 0.8rem 2.5rem 0.8rem 3rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1.5px solid rgba(16, 185, 129, 0.6);
+            border-radius: 60px;
+            font-size: 0.9rem;
+            color: white;
+            outline: none;
+        }
+
+        #searchInput:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+        }
+
+        #searchInput::placeholder {
+            color: #bbb;
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+        }
+
+        .clear-btn:hover {
+            background: #10b981;
+        }
+
+        .btn-refresh-neon,
+        .btn-back-neon {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            color: #a7f3d0;
+            padding: 0.7rem 1.2rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .btn-refresh-neon:hover,
+        .btn-back-neon:hover {
+            background: rgba(16, 185, 129, 0.35);
+            transform: scale(1.02);
+        }
+
+        .btn-back-neon span {
+            font-size: 1.1rem;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0 1.5rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 60px;
+            font-size: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .shortcut-msg {
+            background: #10b981;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            color: #022c22;
+            font-weight: bold;
+            font-size: 0.7rem;
+        }
+
+        /* GRID */
+        .programming-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (min-width: 1200px) {
+            .programming-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (min-width: 1700px) {
+            .programming-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        @media (max-width: 1199px) and (min-width: 768px) {
+            .programming-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .programming-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CARD */
+        .lang-card {
+            background: rgba(20, 35, 30, 0.85);
+            backdrop-filter: blur(4px);
+            border-radius: 1rem;
+            padding: 1.2rem;
+            transition: all 0.25s ease;
+            border-left: 4px solid #10b981;
+            border-right: 1px solid rgba(16, 185, 129, 0.2);
+            border-top: 1px solid rgba(16, 185, 129, 0.15);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .lang-card:hover {
+            transform: translateY(-4px);
+            border-left-color: #f59e0b;
+            background: rgba(35, 60, 50, 0.95);
+            box-shadow: 0 10px 20px -8px black;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+        }
+
+        .card-content h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .card-content p {
+            color: #ccc;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .mapel-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            background: rgba(16, 185, 129, 0.3);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            width: fit-content;
+            color: #a7f3d0;
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            background: rgba(245, 158, 11, 0.2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            color: #fbbf24;
+        }
+
+        .difficulty-badge.beginner {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+        }
+
+        .difficulty-badge.intermediate {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .difficulty-badge.advanced {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 0.2rem;
+        }
+
+        .button-group .materi-link {
+            flex: 1;
+            text-decoration: none;
+            display: block;
+        }
+
+        .btn-teori,
+        .btn-latihan {
+            width: 100%;
+            padding: 0.65rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-align: center;
+            transition: all 0.2s;
+            display: inline-block;
+            cursor: default;
+        }
+
+        .materi-link:not([href=""]) .btn-teori,
+        .materi-link:not([href="#"]):not([href=""]):not([href="#"]) .btn-teori {
+            background: linear-gradient(95deg, #10b981, #059669);
+            color: white;
+            border: none;
+            cursor: pointer;
+            animation: btnPulse 2s infinite ease;
+        }
+
+        .materi-link[href=""] .btn-teori,
+        .materi-link[href="#"] .btn-teori {
+            background: #2a3a35;
+            color: #7a9a8a;
+            border: 1px solid #3a5a4a;
+            cursor: not-allowed;
+            animation: none;
+        }
+
+        .btn-latihan {
+            background: #2a3a35;
+            border: 1px solid #3a5a4a;
+            color: #7a9a8a;
+            cursor: not-allowed;
+        }
+
+        .latihan-link-active .btn-latihan,
+        .btn-latihan.active-latihan {
+            background: linear-gradient(95deg, #f59e0b, #d97706);
+            color: white;
+            border: none;
+            cursor: pointer;
+            animation: btnLatihanPulse 2s infinite ease;
+            box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+        }
+
+        @keyframes btnPulse {
+            0% {
+                background: linear-gradient(95deg, #10b981, #059669);
+                box-shadow: 0 0 3px #10b981;
+            }
+
+            50% {
+                background: linear-gradient(95deg, #f59e0b, #10b981);
+                box-shadow: 0 0 10px #f59e0b;
+            }
+
+            100% {
+                background: linear-gradient(95deg, #10b981, #059669);
+                box-shadow: 0 0 3px #10b981;
+            }
+        }
+
+        @keyframes btnLatihanPulse {
+            0% {
+                background: linear-gradient(95deg, #f59e0b, #d97706);
+                box-shadow: 0 0 3px #f59e0b;
+            }
+
+            50% {
+                background: linear-gradient(95deg, #fbbf24, #f59e0b);
+                box-shadow: 0 0 12px #fbbf24;
+            }
+
+            100% {
+                background: linear-gradient(95deg, #f59e0b, #d97706);
+                box-shadow: 0 0 3px #f59e0b;
+            }
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1rem 0;
+        }
+
+        .filter-btn {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-color: transparent;
+            color: white;
+            font-weight: bold;
+        }
+
+        .no-result {
+            text-align: center;
+            padding: 2rem;
+            color: #f59e0b;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 1rem;
+            margin-top: 1.5rem;
+            grid-column: 1 / -1;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+                border-left-color: #10b981;
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+                border-left-color: #f59e0b;
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+                border-left-color: #10b981;
+            }
+        }
+
+        /* ========================================== */
+        /* RESET & GLOBAL STYLES */
+        /* ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #0a0f1a, #03060c);
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Roboto', sans-serif;
+            padding: 1.5rem;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            transition: background 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* 6 tema warna neon */
+        body.theme-green {
+            background: radial-gradient(circle at 30% 20%, #064e3b, #022c22);
+        }
+
+        body.theme-blue {
+            background: radial-gradient(circle at 70% 40%, #1e3a8a, #0f172a);
+        }
+
+        body.theme-cyan {
+            background: radial-gradient(circle at 50% 70%, #0e7490, #164e63);
+        }
+
+        body.theme-purple {
+            background: radial-gradient(circle at 60% 30%, #7e22ce, #4c1d95);
+        }
+
+        body.theme-pink {
+            background: radial-gradient(circle at 40% 60%, #be185d, #831843);
+        }
+
+        body.theme-orange {
+            background: radial-gradient(circle at 80% 50%, #c2410c, #7c2d12);
+        }
+
+        /* ========================================== */
+        /* CONTAINER UTAMA */
+        /* ========================================== */
+        .app-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* ========================================== */
+        /* HEADER RESPONSIF */
+        /* ========================================== */
+        .top-brand-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .noxa-store {
+            font-size: clamp(1.3rem, 5vw, 2.8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
+            white-space: nowrap;
+            animation: softPulse 2s infinite alternate;
+        }
+
+        @keyframes softPulse {
+            0% {
+                text-shadow: 0 0 4px #10b981;
+                opacity: 0.95;
+            }
+
+            100% {
+                text-shadow: 0 0 18px #10b981;
+                opacity: 1;
+            }
+        }
+
+        .judul-web-kanan h1 {
+            font-size: clamp(0.9rem, 3.5vw, 1.6rem);
+            font-weight: 700;
+            background: linear-gradient(120deg, #f9f3c1, #a7f3d0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: right;
+        }
+
+        /* ========================================== */
+        /* STATS & SEARCH RESPONSIF */
+        /* ========================================== */
+        .top-stats-search {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .total-stats-box {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+        }
+
+        .total-stats-box span {
+            font-size: 0.8rem;
+            color: white;
+            background: rgba(16, 185, 129, 0.2);
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+        }
+
+        .total-stats-box span strong {
+            color: #10b981;
+        }
+
+        .search-section {
+            max-width: 600px;
+            margin: 0;
+        }
+
+        .search-row-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .search-wrapper {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 0.8rem 2.5rem 0.8rem 3rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1.5px solid rgba(16, 185, 129, 0.6);
+            border-radius: 60px;
+            font-size: 0.9rem;
+            color: white;
+            outline: none;
+        }
+
+        #searchInput:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+        }
+
+        #searchInput::placeholder {
+            color: #bbb;
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+        }
+
+        .clear-btn:hover {
+            background: #10b981;
+        }
+
+        .btn-refresh-neon,
+        .btn-back-neon {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            color: #a7f3d0;
+            padding: 0.7rem 1.2rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-refresh-neon:hover,
+        .btn-back-neon:hover {
+            background: rgba(16, 185, 129, 0.35);
+            transform: scale(1.02);
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0 1.5rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 60px;
+            font-size: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .shortcut-msg {
+            background: #10b981;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            color: #022c22;
+            font-weight: bold;
+            font-size: 0.7rem;
+        }
+
+        /* ========================================== */
+        /* FILTER BUTTONS RESPONSIF */
+        /* ========================================== */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1rem 0;
+        }
+
+        .filter-btn {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-color: transparent;
+            color: white;
+            font-weight: bold;
+        }
+
+        @media (max-width: 575px) {
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.4rem 0.9rem;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* ========================================== */
+        /* GRID RESPONSIF UTAMA */
+        /* ========================================== */
+        .programming-grid {
+            display: grid;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        /* TV & LAYAR LEBAR (1700px ke atas) */
+        @media (min-width: 1700px) {
+            .programming-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        /* DESKTOP LARGE (1400px - 1699px) */
+        @media (min-width: 1400px) and (max-width: 1699px) {
+            .programming-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        /* DESKTOP / LAPTOP (1200px - 1399px) */
+        @media (min-width: 1200px) and (max-width: 1399px) {
+            .programming-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* LAPTOP KECIL / TABLET LANDSCAPE (992px - 1199px) */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .programming-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* TABLET PORTRAIT (768px - 991px) */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .programming-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* HP LANDSCAPE (576px - 767px) */
+        @media (min-width: 576px) and (max-width: 767px) {
+            .programming-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* HP PORTRAIT (di bawah 575px) */
+        @media (max-width: 575px) {
+            .programming-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================== */
+        /* CARD STYLES */
+        /* ========================================== */
+        .lang-card {
+            background: rgba(20, 35, 30, 0.85);
+            backdrop-filter: blur(4px);
+            border-radius: 1rem;
+            padding: 1.2rem;
+            transition: all 0.25s ease;
+            border-left: 4px solid #10b981;
+            border-right: 1px solid rgba(16, 185, 129, 0.2);
+            border-top: 1px solid rgba(16, 185, 129, 0.15);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .lang-card:hover {
+            transform: translateY(-4px);
+            border-left-color: #f59e0b;
+            background: rgba(35, 60, 50, 0.95);
+            box-shadow: 0 10px 20px -8px black;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+        }
+
+        .card-content h3 {
+            color: #fff;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .card-content p {
+            color: #ccc;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .mapel-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            background: rgba(16, 185, 129, 0.3);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            width: fit-content;
+            color: #a7f3d0;
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            background: rgba(245, 158, 11, 0.2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            color: #fbbf24;
+        }
+
+        .difficulty-badge.beginner {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+        }
+
+        .difficulty-badge.intermediate {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .difficulty-badge.advanced {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        /* ========================================== */
+        /* BUTTON GROUP RESPONSIF */
+        /* ========================================== */
+        .button-group {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 0.2rem;
+        }
+
+        .button-group .materi-link {
+            flex: 1;
+            text-decoration: none;
+            display: block;
+        }
+
+        .btn-teori,
+        .btn-latihan {
+            width: 100%;
+            padding: 0.65rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-align: center;
+            transition: all 0.2s;
+            display: inline-block;
+            font-family: inherit;
+        }
+
+        /* Tombol Teori aktif */
+        .materi-link:not([href=""]) .btn-teori,
+        .materi-link:not([href="#"]):not([href=""]):not([href="#"]) .btn-teori {
+            background: linear-gradient(95deg, #10b981, #059669);
+            color: white;
+            border: none;
+            cursor: pointer;
+            animation: btnPulse 2s infinite ease;
+        }
+
+        /* Tombol Teori nonaktif */
+        .materi-link[href=""] .btn-teori,
+        .materi-link[href="#"] .btn-teori {
+            background: #2a3a35;
+            color: #7a9a8a;
+            border: 1px solid #3a5a4a;
+            cursor: not-allowed;
+            animation: none;
+        }
+
+        /* Tombol Latihan aktif */
+        .btn-latihan.active-latihan {
+            background: linear-gradient(95deg, #f59e0b, #d97706);
+            color: white;
+            border: none;
+            cursor: pointer;
+            animation: btnLatihanPulse 2s infinite ease;
+            box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+        }
+
+        /* Tombol Latihan nonaktif */
+        .btn-latihan {
+            background: #2a3a35;
+            border: 1px solid #3a5a4a;
+            color: #7a9a8a;
+            cursor: not-allowed;
+        }
+
+        @keyframes btnPulse {
+            0% {
+                background: linear-gradient(95deg, #10b981, #059669);
+                box-shadow: 0 0 3px #10b981;
+            }
+
+            50% {
+                background: linear-gradient(95deg, #f59e0b, #10b981);
+                box-shadow: 0 0 10px #f59e0b;
+            }
+
+            100% {
+                background: linear-gradient(95deg, #10b981, #059669);
+                box-shadow: 0 0 3px #10b981;
+            }
+        }
+
+        @keyframes btnLatihanPulse {
+            0% {
+                background: linear-gradient(95deg, #f59e0b, #d97706);
+                box-shadow: 0 0 3px #f59e0b;
+            }
+
+            50% {
+                background: linear-gradient(95deg, #fbbf24, #f59e0b);
+                box-shadow: 0 0 12px #fbbf24;
+            }
+
+            100% {
+                background: linear-gradient(95deg, #f59e0b, #d97706);
+                box-shadow: 0 0 3px #f59e0b;
+            }
+        }
+
+        /* ========================================== */
+        /* RESPONSIVE BREAKPOINTS UMUM */
+        /* ========================================== */
+
+        /* Tablet & HP */
+        @media (max-width: 991px) {
+            body {
+                padding: 1rem;
+            }
+
+            .app-container {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .top-brand-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .judul-web-kanan h1 {
+                text-align: center;
+            }
+
+            .noxa-store {
+                white-space: normal;
+                text-align: center;
+            }
+
+            .top-stats-search {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-section {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 575px) {
+            body {
+                padding: 0.8rem;
+            }
+
+            .app-container {
+                padding: 0.8rem;
+            }
+
+            .total-stats-box {
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .total-stats-box span {
+                font-size: 0.7rem;
+                padding: 0.15rem 0.6rem;
+            }
+
+            .search-row-flex {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .search-wrapper {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .btn-refresh-neon,
+            .btn-back-neon {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            .btn-teori,
+            .btn-latihan {
+                padding: 0.7rem;
+                font-size: 0.85rem;
+            }
+
+            .lang-card {
+                padding: 1rem;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                text-align: center;
+                border-radius: 1rem;
+                padding: 0.6rem;
+            }
+
+            .shortcut-msg {
+                font-size: 0.6rem;
+            }
+        }
+
+        /* Tablet - tombol tetap horizontal */
+        @media (min-width: 576px) and (max-width: 991px) {
+            .button-group {
+                flex-direction: row;
+                gap: 0.6rem;
+            }
+
+            .btn-teori,
+            .btn-latihan {
+                padding: 0.55rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* ========================================== */
+        /* LANDSCAPE MODE KHUSUS UNTUK HP */
+        /* ========================================== */
+        @media (max-width: 896px) and (orientation: landscape) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .app-container {
+                padding: 0.8rem;
+            }
+
+            .programming-grid {
+                gap: 0.8rem;
+            }
+
+            .lang-card {
+                padding: 0.8rem;
+            }
+
+            .button-group {
+                flex-direction: row;
+                gap: 0.5rem;
+            }
+
+            .btn-teori,
+            .btn-latihan {
+                padding: 0.4rem;
+                font-size: 0.7rem;
+            }
+
+            .top-brand-bar {
+                margin-bottom: 0.8rem;
+                gap: 0.5rem;
+            }
+
+            .stats-bar {
+                margin: 0.3rem 0 0.8rem;
+                padding: 0.3rem 0.8rem;
+            }
+
+            .filter-buttons {
+                gap: 0.4rem;
+                margin: 0.5rem 0;
+            }
+
+            .filter-btn {
+                padding: 0.3rem 0.7rem;
+                font-size: 0.65rem;
+            }
+        }
+
+        /* ========================================== */
+        /* TV LANDSCAPE KHUSUS (LAYAR SANGAT LEBAR) */
+        /* ========================================== */
+        @media (min-width: 1920px) and (orientation: landscape) {
+            body {
+                padding: 2rem;
+            }
+
+            .app-container {
+                max-width: 90%;
+                padding: 2rem;
+            }
+
+            .programming-grid {
+                gap: 1.5rem;
+            }
+
+            .lang-card {
+                padding: 1.5rem;
+            }
+
+            .card-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .card-content p {
+                font-size: 0.9rem;
+            }
+
+            .btn-teori,
+            .btn-latihan {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .card-icon {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* ========================================== */
+        /* TABLET PORTRAIT KHUSUS */
+        /* ========================================== */
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+            .app-container {
+                padding: 1.2rem;
+            }
+        }
+
+        /* ========================================== */
+        /* TABLET LANDSCAPE KHUSUS */
+        /* ========================================== */
+        @media (min-width: 1025px) and (max-width: 1366px) and (orientation: landscape) {
+            .programming-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ========================================== */
+        /* NO RESULT MESSAGE */
+        /* ========================================== */
+        .no-result {
+            text-align: center;
+            padding: 2rem;
+            color: #f59e0b;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 1rem;
+            margin-top: 1.5rem;
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 575px) {
+            .no-result {
+                padding: 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ========================================== */
+        /* SCROLLBAR RESPONSIF */
+        /* ========================================== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a1a15;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
+        }
+
+        @media (min-width: 1400px) {
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+        }
+
+        /* ========================================== */
+        /* ANIMATIONS */
+        /* ========================================== */
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+                border-left-color: #10b981;
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+                border-left-color: #f59e0b;
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+                border-left-color: #10b981;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a1a15;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="theme-green">
+    <div class="app-container">
+        <div class="top-brand-bar">
+            <div class="noxa-store">💻 NOXA STORE</div>
+            <div class="judul-web-kanan">
+                <h1>📚 Daftar Bahasa Pemrograman</h1>
+            </div>
+        </div>
+
+        <!-- STATS + SEARCH -->
+        <div class="top-stats-search">
+            <div class="total-stats-box">
+                <span>📊 <strong>Total Bahasa:</strong> <span id="totalMateriCount">22</span></span>
+                <span>✅ <strong>Sudah Ada:</strong> <span id="materiSudahAda">20</span></span>
+                <span>⏳ <strong>Belum Ada:</strong> <span id="materiBelumAda">2</span></span>
+            </div>
+            <div class="search-section">
+                <div class="search-row-flex">
+                    <div class="search-wrapper">
+                        <div class="search-icon">🔍</div>
+                        <input type="text" id="searchInput" placeholder="Cari bahasa pemrograman..." autocomplete="off">
+                        <button id="clearSearchBtn" class="clear-btn">✖</button>
+                    </div>
+                    <button id="backButton" class="btn-back-neon">
+                        <span>←</span> Kembali
+                    </button>
+                    <button id="refreshButton" class="btn-refresh-neon">
+                        <span>⟳</span> Refresh
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="web">🌐 Web</button>
+            <button class="filter-btn" data-filter="backend">⚙️ Backend</button>
+            <button class="filter-btn" data-filter="mobile">📱 Mobile</button>
+            <button class="filter-btn" data-filter="data">🤖 AI & Data</button>
+            <button class="filter-btn" data-filter="system">🔧 System</button>
+            <button class="filter-btn" data-filter="database">🗄️ Database</button>
+            <button class="filter-btn" data-filter="scripting">📜 Scripting</button>
+        </div>
+
+        <div class="stats-bar">
+            <span id="resultCounter">📚 Menampilkan 22 bahasa</span>
+            <span class="shortcut-msg">⌨️ Ctrl+K / Shift+F / ESC</span>
+            <span id="shortcutNotif" style="font-size:0.7rem;"></span>
+        </div>
+
+        <div class="programming-grid" id="programmingGrid">
+            <!-- HTML -->
+            <div class="lang-card" data-name="html" data-category="web">
+                <div class="card-icon">🌐</div>
+                <div class="card-content">
+                    <h3>HTML</h3>
+                    <p>HyperText Markup Language - Kerangka dasar website</p>
+                    <div class="mapel-badge">Web Development</div>
+                    <div class="difficulty-badge beginner">Pemula</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CSS -->
+            <div class="lang-card" data-name="css" data-category="web">
+                <div class="card-icon">🎨</div>
+                <div class="card-content">
+                    <h3>CSS</h3>
+                    <p>Cascading Style Sheets - Styling dan desain website</p>
+                    <div class="mapel-badge">Web Development</div>
+                    <div class="difficulty-badge beginner">Pemula</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="lang-card" data-name="javascript" data-category="web">
+                <div class="card-icon">🟨</div>
+                <div class="card-content">
+                    <h3>JavaScript</h3>
+                    <p>Bahasa untuk web interaktif, frontend & backend</p>
+                    <div class="mapel-badge">Web Development</div>
+                    <div class="difficulty-badge beginner">Pemula</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Python -->
+            <div class="lang-card" data-name="python" data-category="data">
+                <div class="card-icon">🐍</div>
+                <div class="card-content">
+                    <h3>Python</h3>
+                    <p>Serbaguna untuk AI, Data Science, Web, dan otomatisasi</p>
+                    <div class="mapel-badge">AI & Data Science</div>
+                    <div class="difficulty-badge beginner">Pemula</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Java -->
+            <div class="lang-card" data-name="java" data-category="backend">
+                <div class="card-icon">☕</div>
+                <div class="card-content">
+                    <h3>Java</h3>
+                    <p>OOP populer untuk enterprise, Android, dan backend</p>
+                    <div class="mapel-badge">Backend</div>
+                    <div class="difficulty-badge intermediate">Menengah</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- C++ -->
+            <div class="lang-card" data-name="cpp" data-category="system">
+                <div class="card-icon">⚡</div>
+                <div class="card-content">
+                    <h3>C++</h3>
+                    <p>OOP, digunakan untuk game, sistem, dan aplikasi performa tinggi</p>
+                    <div class="mapel-badge">System/Low-Level</div>
+                    <div class="difficulty-badge advanced">Mahir</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PHP -->
+            <div class="lang-card" data-name="php" data-category="backend">
+                <div class="card-icon">🐘</div>
+                <div class="card-content">
+                    <h3>PHP</h3>
+                    <p>Scripting untuk web development, powering WordPress</p>
+                    <div class="mapel-badge">Backend</div>
+                    <div class="difficulty-badge beginner">Pemula</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- SQL -->
+            <div class="lang-card" data-name="sql" data-category="database">
+                <div class="card-icon">🗄️</div>
+                <div class="card-content">
+                    <h3>SQL</h3>
+                    <p>Structured Query Language - Mengelola database relasional</p>
+                    <div class="mapel-badge">Database</div>
+                    <div class="difficulty-badge intermediate">Menengah</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- TypeScript -->
+            <div class="lang-card" data-name="typescript" data-category="web">
+                <div class="card-icon">📘</div>
+                <div class="card-content">
+                    <h3>TypeScript</h3>
+                    <p>Superset JavaScript dengan static typing</p>
+                    <div class="mapel-badge">Web Development</div>
+                    <div class="difficulty-badge intermediate">Menengah</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Go -->
+            <div class="lang-card" data-name="go" data-category="backend">
+                <div class="card-icon">🐹</div>
+                <div class="card-content">
+                    <h3>Go (Golang)</h3>
+                    <p>Bahasa dari Google, performa tinggi dan concurrency</p>
+                    <div class="mapel-badge">Backend</div>
+                    <div class="difficulty-badge intermediate">Menengah</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Rust -->
+            <div class="lang-card" data-name="rust" data-category="system">
+                <div class="card-icon">🦀</div>
+                <div class="card-content">
+                    <h3>Rust</h3>
+                    <p>Modern dengan memory safety tanpa garbage collector</p>
+                    <div class="mapel-badge">System/Low-Level</div>
+                    <div class="difficulty-badge advanced">Mahir</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Kotlin -->
+            <div class="lang-card" data-name="kotlin" data-category="mobile">
+                <div class="card-icon">📱</div>
+                <div class="card-content">
+                    <h3>Kotlin</h3>
+                    <p>Bahasa modern untuk pengembangan Android</p>
+                    <div class="mapel-badge">Mobile</div>
+                    <div class="difficulty-badge intermediate">Menengah</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Swift -->
+            <div class="lang-card" data-name="swift" data-category="mobile">
+                <div class="card-icon">🍏</div>
+                <div class="card-content">
+                    <h3>Swift</h3>
+                    <p>Bahasa modern dari Apple untuk iOS, macOS, watchOS</p>
+                    <div class="mapel-badge">Mobile</div>
+                    <div class="difficulty-badge intermediate">Menengah</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- C# -->
+            <div class="lang-card" data-name="csharp" data-category="backend">
+                <div class="card-icon">🎮</div>
+                <div class="card-content">
+                    <h3>C#</h3>
+                    <p>Bahasa modern dari Microsoft, untuk game (Unity) dan enterprise</p>
+                    <div class="mapel-badge">Backend</div>
+                    <div class="difficulty-badge intermediate">Menengah</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ruby -->
+            <div class="lang-card" data-name="ruby" data-category="backend">
+                <div class="card-icon">💎</div>
+                <div class="card-content">
+                    <h3>Ruby</h3>
+                    <p>Sintaks elegan, terkenal dengan framework Rails</p>
+                    <div class="mapel-badge">Backend</div>
+                    <div class="difficulty-badge beginner">Pemula</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dart -->
+            <div class="lang-card" data-name="dart" data-category="mobile">
+                <div class="card-icon">🎯</div>
+                <div class="card-content">
+                    <h3>Dart</h3>
+                    <p>Bahasa dari Google, digunakan untuk framework Flutter</p>
+                    <div class="mapel-badge">Mobile</div>
+                    <div class="difficulty-badge intermediate">Menengah</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- R -->
+            <div class="lang-card" data-name="r" data-category="data">
+                <div class="card-icon">📊</div>
+                <div class="card-content">
+                    <h3>R</h3>
+                    <p>Bahasa untuk analisis statistik dan visualisasi data</p>
+                    <div class="mapel-badge">AI & Data Science</div>
+                    <div class="difficulty-badge intermediate">Menengah</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bash -->
+            <div class="lang-card" data-name="bash" data-category="scripting">
+                <div class="card-icon">🐚</div>
+                <div class="card-content">
+                    <h3>Bash/Shell</h3>
+                    <p>Scripting untuk otomatisasi task dan administrasi sistem</p>
+                    <div class="mapel-badge">Scripting</div>
+                    <div class="difficulty-badge intermediate">Menengah</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Lua -->
+            <div class="lang-card" data-name="lua" data-category="scripting">
+                <div class="card-icon">🌀</div>
+                <div class="card-content">
+                    <h3>Lua</h3>
+                    <p>Scripting ringan, digunakan untuk game (Roblox, Love2D)</p>
+                    <div class="mapel-badge">Scripting</div>
+                    <div class="difficulty-badge beginner">Pemula</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- MySQL -->
+            <div class="lang-card" data-name="mysql" data-category="database">
+                <div class="card-icon">🗄️</div>
+                <div class="card-content">
+                    <h3>MySQL</h3>
+                    <p>Sistem manajemen basis data relasional paling populer</p>
+                    <div class="mapel-badge">Database</div>
+                    <div class="difficulty-badge intermediate">Menengah</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- C -->
+            <div class="lang-card" data-name="c" data-category="system">
+                <div class="card-icon">🔧</div>
+                <div class="card-content">
+                    <h3>C</h3>
+                    <p>Bahasa prosedural, dasar dari banyak bahasa modern</p>
+                    <div class="mapel-badge">System/Low-Level</div>
+                    <div class="difficulty-badge intermediate">Menengah</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Assembly -->
+            <div class="lang-card" data-name="assembly" data-category="system">
+                <div class="card-icon">⚙️</div>
+                <div class="card-content">
+                    <h3>Assembly</h3>
+                    <p>Bahasa tingkat rendah yang berhubungan langsung dengan hardware</p>
+                    <div class="mapel-badge">System/Low-Level</div>
+                    <div class="difficulty-badge advanced">Mahir</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ABAP -->
+            <div class="lang-card" data-name="abap" data-category="backend">
+                <div class="card-icon">🟢</div>
+                <div class="card-content">
+                    <h3>ABAP</h3>
+                    <p>Advanced Business Application Programming - Bahasa untuk SAP</p>
+                    <div class="mapel-badge">Backend</div>
+                    <div class="difficulty-badge advanced">Mahir</div>
+                </div>
+                <div class="button-group">
+                    <a href="" target="_blank" class="materi-link">
+                        <button class="btn-teori">📘 Teori →</button>
+                    </a>
+                    <a href="" target="_blank" class="materi-link latihan-link">
+                        <button class="btn-latihan">✏️ Latihan →</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            // Animasi warna bergantian setiap 5 detik
+            const colorThemes = ['theme-green', 'theme-blue', 'theme-cyan', 'theme-purple', 'theme-pink', 'theme-orange'];
+            let currentThemeIndex = 0;
+            const bodyEl = document.body;
+            function applyNextTheme() {
+                colorThemes.forEach(theme => bodyEl.classList.remove(theme));
+                currentThemeIndex = (currentThemeIndex + 1) % colorThemes.length;
+                bodyEl.classList.add(colorThemes[currentThemeIndex]);
+            }
+            setInterval(applyNextTheme, 5000);
+
+            // Elemen
+            const searchInput = document.getElementById('searchInput');
+            const resultCounterSpan = document.getElementById('resultCounter');
+            const clearBtn = document.getElementById('clearSearchBtn');
+            const shortcutNotifSpan = document.getElementById('shortcutNotif');
+            const refreshBtn = document.getElementById('refreshButton');
+            const backBtn = document.getElementById('backButton');
+            const allCards = Array.from(document.querySelectorAll('.lang-card'));
+            const filterBtns = document.querySelectorAll('.filter-btn');
+
+            let currentFilter = 'all';
+            let currentSearch = '';
+
+            // Update statistik berdasarkan link teori yang valid
+            function updateStatistik() {
+                let sudahAda = 0;
+                let belumAda = 0;
+                allCards.forEach(card => {
+                    const teoriLink = card.querySelector('.button-group .materi-link:not(.latihan-link)');
+                    const teoriHref = teoriLink ? teoriLink.getAttribute('href') : '';
+                    if (teoriHref && teoriHref !== '' && teoriHref !== '#') {
+                        sudahAda++;
+                    } else {
+                        belumAda++;
+                    }
+                });
+                document.getElementById('totalMateriCount').innerText = allCards.length;
+                document.getElementById('materiSudahAda').innerText = sudahAda;
+                document.getElementById('materiBelumAda').innerText = belumAda;
+            }
+
+            // Animasi fade-in
+            allCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(15px)';
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 50);
+            });
+
+            // Filter fungsi
+            function filterMateri() {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                let visibleCount = 0;
+
+                allCards.forEach(card => {
+                    const name = card.getAttribute('data-name') || '';
+                    const category = card.getAttribute('data-category') || '';
+                    const titleH3 = card.querySelector('.card-content h3')?.innerText || '';
+                    const searchMatch = searchTerm === '' || name.includes(searchTerm) || titleH3.toLowerCase().includes(searchTerm);
+                    const filterMatch = currentFilter === 'all' || category === currentFilter;
+                    const isMatch = searchMatch && filterMatch;
+
+                    card.style.display = isMatch ? '' : 'none';
+                    if (isMatch) {
+                        visibleCount++;
+                        if (searchTerm !== '') {
+                            card.style.animation = 'none';
+                            card.offsetHeight;
+                            card.style.animation = 'pulseGlow 0.4s ease';
+                        }
+                    }
+                });
+
+                let noResultDiv = document.getElementById('customNoResultMsg');
+                if ((searchTerm !== '' || currentFilter !== 'all') && visibleCount === 0) {
+                    resultCounterSpan.innerHTML = '❌ Bahasa tidak ditemukan';
+                    resultCounterSpan.style.color = '#f59e0b';
+                    if (!noResultDiv) {
+                        const msgDiv = document.createElement('div');
+                        msgDiv.id = 'customNoResultMsg';
+                        msgDiv.className = 'no-result';
+                        msgDiv.innerHTML = '💻 Bahasa pemrograman tidak tersedia<br><span style="font-size:0.8rem;">Coba kata kunci lain</span>';
+                        document.querySelector('.programming-grid').parentNode.insertBefore(msgDiv, document.querySelector('.programming-grid').nextSibling);
+                    } else {
+                        noResultDiv.style.display = 'block';
+                    }
+                } else {
+                    let filterText = '';
+                    if (currentFilter !== 'all') {
+                        const filterNames = { web: 'Web', backend: 'Backend', mobile: 'Mobile', data: 'AI & Data', system: 'System', database: 'Database', scripting: 'Scripting' };
+                        filterText = ` dalam kategori ${filterNames[currentFilter]}`;
+                    }
+                    resultCounterSpan.innerHTML = searchTerm !== '' ? `✨ Ditemukan ${visibleCount} bahasa${filterText}` : `📚 Menampilkan ${visibleCount} bahasa${filterText}`;
+                    resultCounterSpan.style.color = '#a7f3d0';
+                    if (noResultDiv) noResultDiv.style.display = 'none';
+                }
+            }
+
+            // Event search
+            let debounceTimer;
+            searchInput.addEventListener('input', () => {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    currentSearch = searchInput.value.trim().toLowerCase();
+                    filterMateri();
+                }, 200);
+            });
+
+            if (clearBtn) {
+                clearBtn.addEventListener('click', () => {
+                    searchInput.value = '';
+                    currentSearch = '';
+                    filterMateri();
+                    searchInput.focus();
+                    if (shortcutNotifSpan) {
+                        shortcutNotifSpan.innerText = '⌨️ Pencarian dihapus';
+                        setTimeout(() => shortcutNotifSpan.innerText = '', 1200);
+                    }
+                });
+            }
+
+            // Filter buttons
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.getAttribute('data-filter');
+                    filterMateri();
+                });
+            });
+
+            // Update status tombol teori dan latihan
+            function updateButtonsState() {
+                document.querySelectorAll('.button-group .materi-link').forEach(link => {
+                    const href = link.getAttribute('href');
+                    const isLatihan = link.classList.contains('latihan-link');
+                    const btn = link.querySelector('button');
+                    if (!btn) return;
+
+                    if (isLatihan) {
+                        if (!href || href === '' || href === '#') {
+                            btn.classList.remove('active-latihan');
+                            btn.style.background = '#2a3a35';
+                            btn.style.color = '#7a9a8a';
+                            btn.style.border = '1px solid #3a5a4a';
+                            btn.style.cursor = 'not-allowed';
+                            btn.style.animation = 'none';
+                            link.addEventListener('click', (e) => {
+                                if (!href || href === '' || href === '#') e.preventDefault();
+                            });
+                        } else {
+                            btn.classList.add('active-latihan');
+                            btn.style.cursor = 'pointer';
+                            if (!link.getAttribute('target')) link.setAttribute('target', '_blank');
+                        }
+                    } else {
+                        if (!href || href === '' || href === '#') {
+                            btn.style.background = '#2a3a35';
+                            btn.style.color = '#7a9a8a';
+                            btn.style.border = '1px solid #3a5a4a';
+                            btn.style.cursor = 'not-allowed';
+                            btn.style.animation = 'none';
+                            link.addEventListener('click', (e) => {
+                                if (!href || href === '' || href === '#') e.preventDefault();
+                            });
+                        } else {
+                            btn.style.background = '';
+                            btn.style.cursor = 'pointer';
+                            if (!link.getAttribute('target')) link.setAttribute('target', '_blank');
+                        }
+                    }
+                });
+                updateStatistik();
+            }
+
+            updateButtonsState();
+
+            // Shortcut keyboard
+            window.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey && e.key === 'k') || (e.ctrlKey && e.key === 'K')) {
+                    e.preventDefault();
+                    searchInput.focus();
+                    if (shortcutNotifSpan) {
+                        shortcutNotifSpan.innerText = '🔎 Ctrl+K fokus pencarian';
+                        setTimeout(() => shortcutNotifSpan.innerText = '', 1500);
+                    }
+                }
+                if (e.shiftKey && (e.key === 'F' || e.key === 'f')) {
+                    e.preventDefault();
+                    searchInput.focus();
+                    if (shortcutNotifSpan) {
+                        shortcutNotifSpan.innerText = '⚡ Shift+F fokus';
+                        setTimeout(() => shortcutNotifSpan.innerText = '', 1500);
+                    }
+                }
+                if (e.key === 'Escape') {
+                    if (searchInput.value !== '') {
+                        searchInput.value = '';
+                        currentSearch = '';
+                        filterMateri();
+                        if (shortcutNotifSpan) {
+                            shortcutNotifSpan.innerText = '⌨️ Pencarian dibersihkan (ESC)';
+                            setTimeout(() => shortcutNotifSpan.innerText = '', 1200);
+                        }
+                    } else {
+                        searchInput.blur();
+                    }
+                }
+            });
+
+            // Tombol Kembali
+            if (backBtn) {
+                backBtn.addEventListener('click', () => {
+                    if (document.referrer && document.referrer !== '') {
+                        window.location.href = document.referrer;
+                    } else {
+                        window.location.href = "index.html";
+                    }
+                });
+            }
+
+            // Refresh button
+            if (refreshBtn) {
+                refreshBtn.addEventListener('click', () => {
+                    searchInput.value = '';
+                    currentSearch = '';
+                    currentFilter = 'all';
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+                    filterMateri();
+                    const refreshIcon = refreshBtn.querySelector('span');
+                    if (refreshIcon) {
+                        refreshIcon.style.animation = 'spin 0.5s ease';
+                        setTimeout(() => { refreshIcon.style.animation = ''; }, 500);
+                    }
+                    if (shortcutNotifSpan) {
+                        shortcutNotifSpan.innerText = '⟳ Halaman disegarkan';
+                        setTimeout(() => shortcutNotifSpan.innerText = '', 1200);
+                    }
+                    allCards.forEach(card => {
+                        card.style.transform = 'scale(0.98)';
+                        setTimeout(() => { card.style.transform = ''; }, 200);
+                    });
+                    updateButtonsState();
+                });
+            }
+
+            if (!document.querySelector('#refreshSpinKeyframe')) {
+                const spinStyle = document.createElement('style');
+                spinStyle.id = 'refreshSpinKeyframe';
+                spinStyle.textContent = `@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`;
+                document.head.appendChild(spinStyle);
+            }
+
+            filterMateri();
+            console.log('✅ Noxa Store | Daftar Bahasa Pemrograman - 22 bahasa, Teori + Latihan, filter kategori, warna berubah tiap 5 detik');
+        })();
+    </script>
+</body>
+
+</html>

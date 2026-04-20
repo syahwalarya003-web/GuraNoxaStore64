@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Noxa Store · Pusat Belajar & Kreativitas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #0a0f1a, #03060c);
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Roboto', sans-serif;
+            padding: 1.5rem;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            transition: background 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* 6 tema warna neon */
+        body.theme-green {
+            background: radial-gradient(circle at 30% 20%, #064e3b, #022c22);
+        }
+
+        body.theme-blue {
+            background: radial-gradient(circle at 70% 40%, #1e3a8a, #0f172a);
+        }
+
+        body.theme-cyan {
+            background: radial-gradient(circle at 50% 70%, #0e7490, #164e63);
+        }
+
+        body.theme-purple {
+            background: radial-gradient(circle at 60% 30%, #7e22ce, #4c1d95);
+        }
+
+        body.theme-pink {
+            background: radial-gradient(circle at 40% 60%, #be185d, #831843);
+        }
+
+        body.theme-orange {
+            background: radial-gradient(circle at 80% 50%, #c2410c, #7c2d12);
+        }
+
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* HEADER */
+        .top-brand-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .noxa-store {
+            font-size: clamp(1.5rem, 5vw, 2.8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
+            white-space: nowrap;
+            animation: softPulse 2s infinite alternate;
+        }
+
+        @keyframes softPulse {
+            0% {
+                text-shadow: 0 0 4px #10b981;
+                opacity: 0.95;
+            }
+
+            100% {
+                text-shadow: 0 0 18px #10b981;
+                opacity: 1;
+            }
+        }
+
+        .judul-web-kanan h1 {
+            font-size: clamp(1rem, 3.5vw, 1.6rem);
+            font-weight: 700;
+            background: linear-gradient(120deg, #f9f3c1, #a7f3d0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: right;
+        }
+
+        .judul-web-kanan p {
+            font-size: 0.65rem;
+            color: #ddd;
+            text-align: right;
+        }
+
+        /* Search */
+        .search-section {
+            max-width: 400px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 0.8rem 2.5rem 0.8rem 3rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1.5px solid rgba(16, 185, 129, 0.6);
+            border-radius: 60px;
+            font-size: 0.9rem;
+            color: white;
+            outline: none;
+        }
+
+        #searchInput:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+        }
+
+        #searchInput::placeholder {
+            color: #bbb;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0 2rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 60px;
+            font-size: 0.8rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .shortcut-msg {
+            background: #10b981;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            color: #022c22;
+            font-weight: bold;
+            font-size: 0.7rem;
+        }
+
+        /* GRID KATEGORI */
+        .kategori-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* CARD KATEGORI - SEDERHANA */
+        .kategori-card {
+            background: rgba(20, 35, 30, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            padding: 2rem 1rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid #10b981;
+            border-right: 1px solid rgba(16, 185, 129, 0.2);
+            border-top: 1px solid rgba(16, 185, 129, 0.15);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .kategori-card:hover {
+            transform: translateY(-8px);
+            border-left-color: #f59e0b;
+            background: rgba(35, 60, 50, 0.95);
+            box-shadow: 0 20px 30px -12px black;
+        }
+
+        .kategori-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .kategori-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-explore {
+            margin-top: 1rem;
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(95deg, #10b981, #059669);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-align: center;
+            transition: all 0.2s;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .kategori-card:hover .btn-explore {
+            background: linear-gradient(95deg, #f59e0b, #d97706);
+            transform: scale(0.98);
+        }
+
+        .no-result {
+            text-align: center;
+            padding: 3rem;
+            color: #f59e0b;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 1rem;
+            margin-top: 1.5rem;
+            grid-column: 1 / -1;
+        }
+
+        /* SOSIAL MEDIA - tambahan baru di bawah grid */
+        .social-section {
+            margin: 2rem auto 1rem auto;
+            padding: 0.5rem 1rem;
+            text-align: center;
+        }
+
+        .social-title {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            background: rgba(255, 255, 240, 0.2);
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            margin-bottom: 1rem;
+            color: #cbd5e6;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .social-link i {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: rgba(16, 185, 129, 0.8);
+            border-color: #fff;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        /* fallback icon jika font tidak mendukung */
+        .wa {
+            background: rgba(37, 211, 102, 0.2);
+            border-left: 3px solid #25D366;
+        }
+
+        .ig {
+            background: rgba(225, 48, 108, 0.2);
+            border-left: 3px solid #E4405F;
+        }
+
+        .tt {
+            background: rgba(0, 0, 0, 0.5);
+            border-left: 3px solid #00f2ea;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ========================================== */
+        /* RESET & GLOBAL STYLES */
+        /* ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #0a0f1a, #03060c);
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Roboto', sans-serif;
+            padding: 1.5rem;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            transition: background 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* 6 tema warna neon */
+        body.theme-green {
+            background: radial-gradient(circle at 30% 20%, #064e3b, #022c22);
+        }
+
+        body.theme-blue {
+            background: radial-gradient(circle at 70% 40%, #1e3a8a, #0f172a);
+        }
+
+        body.theme-cyan {
+            background: radial-gradient(circle at 50% 70%, #0e7490, #164e63);
+        }
+
+        body.theme-purple {
+            background: radial-gradient(circle at 60% 30%, #7e22ce, #4c1d95);
+        }
+
+        body.theme-pink {
+            background: radial-gradient(circle at 40% 60%, #be185d, #831843);
+        }
+
+        body.theme-orange {
+            background: radial-gradient(circle at 80% 50%, #c2410c, #7c2d12);
+        }
+
+        /* ========================================== */
+        /* CONTAINER UTAMA */
+        /* ========================================== */
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* ========================================== */
+        /* HEADER RESPONSIF */
+        /* ========================================== */
+        .top-brand-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .noxa-store {
+            font-size: clamp(1.3rem, 5vw, 2.8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
+            white-space: nowrap;
+            animation: softPulse 2s infinite alternate;
+        }
+
+        @keyframes softPulse {
+            0% {
+                text-shadow: 0 0 4px #10b981;
+                opacity: 0.95;
+            }
+
+            100% {
+                text-shadow: 0 0 18px #10b981;
+                opacity: 1;
+            }
+        }
+
+        .judul-web-kanan h1 {
+            font-size: clamp(0.9rem, 3.5vw, 1.6rem);
+            font-weight: 700;
+            background: linear-gradient(120deg, #f9f3c1, #a7f3d0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: right;
+        }
+
+        .judul-web-kanan p {
+            font-size: 0.65rem;
+            color: #ddd;
+            text-align: right;
+        }
+
+        /* ========================================== */
+        /* SEARCH SECTION RESPONSIF */
+        /* ========================================== */
+        .search-section {
+            max-width: 400px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 0.8rem 2.5rem 0.8rem 3rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1.5px solid rgba(16, 185, 129, 0.6);
+            border-radius: 60px;
+            font-size: 0.9rem;
+            color: white;
+            outline: none;
+        }
+
+        #searchInput:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+        }
+
+        #searchInput::placeholder {
+            color: #bbb;
+        }
+
+        @media (max-width: 575px) {
+            .search-section {
+                max-width: 100%;
+                padding: 0 0.5rem;
+            }
+        }
+
+        /* ========================================== */
+        /* STATS BAR RESPONSIF */
+        /* ========================================== */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0 2rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 60px;
+            font-size: 0.8rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .shortcut-msg {
+            background: #10b981;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            color: #022c22;
+            font-weight: bold;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 575px) {
+            .stats-bar {
+                flex-direction: column;
+                text-align: center;
+                border-radius: 1rem;
+                padding: 0.6rem;
+                gap: 0.5rem;
+            }
+
+            .shortcut-msg {
+                font-size: 0.6rem;
+            }
+        }
+
+        /* ========================================== */
+        /* GRID KATEGORI RESPONSIF */
+        /* ========================================== */
+        .kategori-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Desktop (1200px ke atas) */
+        @media (min-width: 1200px) {
+            .kategori-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Laptop (992px - 1199px) */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .kategori-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.2rem;
+            }
+        }
+
+        /* Tablet Landscape (768px - 991px) */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .kategori-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.2rem;
+            }
+        }
+
+        /* Tablet Portrait & HP (di bawah 767px) */
+        @media (max-width: 767px) {
+            .kategori-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        /* ========================================== */
+        /* CARD KATEGORI */
+        /* ========================================== */
+        .kategori-card {
+            background: rgba(20, 35, 30, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            padding: 2rem 1rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid #10b981;
+            border-right: 1px solid rgba(16, 185, 129, 0.2);
+            border-top: 1px solid rgba(16, 185, 129, 0.15);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .kategori-card:hover {
+            transform: translateY(-8px);
+            border-left-color: #f59e0b;
+            background: rgba(35, 60, 50, 0.95);
+            box-shadow: 0 20px 30px -12px black;
+        }
+
+        .kategori-icon {
+            font-size: clamp(3rem, 8vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .kategori-title {
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-explore {
+            margin-top: 1rem;
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(95deg, #10b981, #059669);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: clamp(0.75rem, 2.5vw, 0.8rem);
+            text-align: center;
+            transition: all 0.2s;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .kategori-card:hover .btn-explore {
+            background: linear-gradient(95deg, #f59e0b, #d97706);
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 575px) {
+            .kategori-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .btn-explore {
+                padding: 0.5rem 1.2rem;
+            }
+        }
+
+        /* ========================================== */
+        /* SOSIAL MEDIA SECTION */
+        /* ========================================== */
+        .social-section {
+            margin: 2rem auto 1rem auto;
+            padding: 0.5rem 1rem;
+            text-align: center;
+        }
+
+        .social-title {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            background: rgba(255, 255, 240, 0.2);
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            margin-bottom: 1rem;
+            color: #cbd5e6;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .social-link i {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: rgba(16, 185, 129, 0.8);
+            border-color: #fff;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Warna khusus social media */
+        .wa {
+            background: rgba(37, 211, 102, 0.2);
+            border-left: 3px solid #25D366;
+        }
+
+        .ig {
+            background: rgba(225, 48, 108, 0.2);
+            border-left: 3px solid #E4405F;
+        }
+
+        .tt {
+            background: rgba(0, 0, 0, 0.5);
+            border-left: 3px solid #00f2ea;
+        }
+
+        @media (max-width: 575px) {
+            .social-icons {
+                gap: 0.8rem;
+            }
+
+            .social-link {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .social-link i {
+                font-size: 1rem;
+            }
+        }
+
+        /* ========================================== */
+        /* FOOTER RESPONSIF */
+        /* ========================================== */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 575px) {
+            footer {
+                font-size: 0.6rem;
+                margin-top: 1.5rem;
+            }
+        }
+
+        /* ========================================== */
+        /* NO RESULT MESSAGE */
+        /* ========================================== */
+        .no-result {
+            text-align: center;
+            padding: 3rem;
+            color: #f59e0b;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 1rem;
+            margin-top: 1.5rem;
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 575px) {
+            .no-result {
+                padding: 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ========================================== */
+        /* RESPONSIVE BREAKPOINTS UMUM */
+        /* ========================================== */
+
+        /* Tablet & HP */
+        @media (max-width: 991px) {
+            body {
+                padding: 1rem;
+            }
+
+            .app-container {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .top-brand-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .judul-web-kanan h1,
+            .judul-web-kanan p {
+                text-align: center;
+            }
+
+            .noxa-store {
+                white-space: normal;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 575px) {
+            body {
+                padding: 0.8rem;
+            }
+
+            .app-container {
+                padding: 0.8rem;
+            }
+        }
+
+        /* ========================================== */
+        /* LANDSCAPE MODE KHUSUS UNTUK HP */
+        /* ========================================== */
+        @media (max-width: 896px) and (orientation: landscape) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .app-container {
+                padding: 0.8rem;
+            }
+
+            .kategori-grid {
+                gap: 0.8rem;
+            }
+
+            .kategori-card {
+                padding: 1rem 0.8rem;
+            }
+
+            .kategori-icon {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .kategori-title {
+                font-size: 1rem;
+            }
+
+            .btn-explore {
+                padding: 0.4rem 1rem;
+                font-size: 0.7rem;
+                margin-top: 0.5rem;
+            }
+
+            .top-brand-bar {
+                margin-bottom: 1rem;
+                gap: 0.5rem;
+            }
+
+            .stats-bar {
+                margin: 0.3rem 0 1rem;
+                padding: 0.3rem 0.8rem;
+            }
+
+            .social-icons {
+                gap: 0.6rem;
+            }
+
+            .social-link {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* ========================================== */
+        /* TV LANDSCAPE KHUSUS (LAYAR SANGAT LEBAR) */
+        /* ========================================== */
+        @media (min-width: 1920px) and (orientation: landscape) {
+            body {
+                padding: 2rem;
+            }
+
+            .app-container {
+                max-width: 90%;
+                padding: 2rem;
+            }
+
+            .kategori-grid {
+                gap: 2rem;
+            }
+
+            .kategori-card {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .kategori-icon {
+                font-size: 5rem;
+            }
+
+            .kategori-title {
+                font-size: 1.6rem;
+            }
+
+            .btn-explore {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
+
+            .social-link {
+                padding: 0.8rem 1.8rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ========================================== */
+        /* TABLET PORTRAIT KHUSUS */
+        /* ========================================== */
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+            .app-container {
+                padding: 1.2rem;
+            }
+
+            .kategori-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ========================================== */
+        /* TABLET LANDSCAPE KHUSUS */
+        /* ========================================== */
+        @media (min-width: 1025px) and (max-width: 1366px) and (orientation: landscape) {
+            .kategori-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* ========================================== */
+        /* SCROLLBAR RESPONSIF */
+        /* ========================================== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a1a15;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
+        }
+
+        @media (min-width: 1400px) {
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a1a15;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="theme-green">
+    <div class="app-container">
+        <div class="top-brand-bar">
+            <div class="noxa-store">🏬 NOXA STORE</div>
+            <div class="judul-web-kanan">
+                <h1>📚 Pusat Belajar & Kreativitas</h1>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="search-section">
+            <div class="search-wrapper">
+                <div class="search-icon">🔍</div>
+                <input type="text" id="searchInput" placeholder="Cari kategori..." autocomplete="off">
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <span class="shortcut-msg">⌨️ Ctrl+K / ESC</span>
+            <span id="shortcutNotif" style="font-size:0.7rem;"></span>
+        </div>
+
+        <div class="kategori-grid" id="kategoriGrid">
+            <!-- 1. Mata Pelajaran -->
+            <a href="mapel.html" class="kategori-card" data-kategori="matapelajaran" data-title="Mata Pelajaran">
+                <div class="kategori-icon">📖</div>
+                <div class="kategori-title">Mata Pelajaran</div>
+                <div class="btn-explore">Jelajahi →</div>
+            </a>
+
+            <!-- 2. Bahasa Pemrograman -->
+            <a href="b.pemrograman.html" class="kategori-card" data-kategori="pemrograman" data-title="Pemrograman">
+                <div class="kategori-icon">💻</div>
+                <div class="kategori-title">Bahasa Pemrograman</div>
+                <div class="btn-explore">Jelajahi →</div>
+            </a>
+
+            <!-- 3. Novella Anonim -->
+            <a href="novel.html" class="kategori-card" data-kategori="novel" data-title="Novel">
+                <div class="kategori-icon">📚</div>
+                <div class="kategori-title">Novella Anonim</div>
+                <div class="btn-explore">Jelajahi →</div>
+            </a>
+
+            <!-- 4. Visual Quotes -->
+            <a href="Quotes.html" class="kategori-card" data-kategori="quotes" data-title="Quotes">
+                <div class="kategori-icon">💬</div>
+                <div class="kategori-title">Visual Quotes</div>
+                <div class="btn-explore">Jelajahi →</div>
+            </a>
+        </div>
+
+        <!-- ========== TAMBAHAN: WA, IG, TT (SOSIAL MEDIA) ========== -->
+        <div class="social-section">
+            <div class="social-title">✦ ikuti kami ✦</div>
+            <div class="social-icons">
+                <a href="https://wa.me/0838-6865-074" target="_blank" rel="noopener noreferrer" class="social-link wa">
+                    <i>💬</i> <span>WhatsApp</span>
+                </a>
+                <a href="https://www.instagram.com/noxagura?igsh=MTU1N2d1cWRndXQzdQ==" target="_blank"
+                    rel="noopener noreferrer" class="social-link ig">
+                    <i>📸</i> <span>Instagram</span>
+                </a>
+                <a href="" target="_blank" rel="noopener noreferrer" class="social-link tt">
+                    <i>🎵</i> <span>TikTok</span>
+                </a>
+            </div>
+        </div>
+        <!-- ========== AKHIR TAMBAHAN SOSIAL MEDIA ========== -->
+
+        <footer>
+            Noxa Store · Pusat Belajar & Kreativitas — Pilih kategori di atas untuk mulai belajar
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            // Animasi warna bergantian setiap 5 detik
+            const colorThemes = ['theme-green', 'theme-blue', 'theme-cyan', 'theme-purple', 'theme-pink', 'theme-orange'];
+            let currentThemeIndex = 0;
+            const bodyEl = document.body;
+            function applyNextTheme() {
+                colorThemes.forEach(theme => bodyEl.classList.remove(theme));
+                currentThemeIndex = (currentThemeIndex + 1) % colorThemes.length;
+                bodyEl.classList.add(colorThemes[currentThemeIndex]);
+            }
+            setInterval(applyNextTheme, 5000);
+
+            // Elemen
+            const searchInput = document.getElementById('searchInput');
+            const shortcutNotifSpan = document.getElementById('shortcutNotif');
+            const kategoriCards = document.querySelectorAll('.kategori-card');
+            const kategoriGrid = document.getElementById('kategoriGrid');
+
+            // Data kategori untuk pencarian
+            const kategoriData = [
+                { nama: "Mata Pelajaran", keyword: "pelajaran mapel bahasa indonesia inggris arab mtk matematika ipa ips pjok ppkn sejarah seni" },
+                { nama: "Pemrograman", keyword: "programming coding html css javascript python php java sql react nodejs" },
+                { nama: "Novel", keyword: "novel novella fiksi romance drama inspirasi petualangan cerita" },
+                { nama: "Quotes", keyword: "quotes kutipan motivasi inspirasi bijak semangat kata mutiara" }
+            ];
+
+            // Fungsi filter kategori
+            function filterKategori() {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                let visibleCount = 0;
+
+                if (searchTerm === '') {
+                    kategoriCards.forEach(card => {
+                        card.style.display = '';
+                    });
+                    removeNoResult();
+                    return;
+                }
+
+                kategoriCards.forEach((card, index) => {
+                    const kategoriNama = kategoriData[index].nama.toLowerCase();
+                    const kategoriKeyword = kategoriData[index].keyword.toLowerCase();
+                    const isMatch = kategoriNama.includes(searchTerm) || kategoriKeyword.includes(searchTerm);
+
+                    if (isMatch) {
+                        card.style.display = '';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0) {
+                    showNoResult();
+                } else {
+                    removeNoResult();
+                }
+            }
+
+            function showNoResult() {
+                let noResult = document.getElementById('noResultKategori');
+                if (!noResult) {
+                    noResult = document.createElement('div');
+                    noResult.id = 'noResultKategori';
+                    noResult.className = 'no-result';
+                    noResult.innerHTML = '🔍 Kategori tidak ditemukan<br><span style="font-size:0.8rem;">Coba: pelajaran, coding, novel, quotes</span>';
+                    kategoriGrid.parentNode.insertBefore(noResult, kategoriGrid.nextSibling);
+                } else {
+                    noResult.style.display = 'block';
+                }
+            }
+
+            function removeNoResult() {
+                const noResult = document.getElementById('noResultKategori');
+                if (noResult) noResult.style.display = 'none';
+            }
+
+            // Event listener untuk search
+            let debounceTimer;
+            searchInput.addEventListener('input', () => {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(filterKategori, 200);
+            });
+
+            // Shortcut keyboard
+            window.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey && e.key === 'k') || (e.ctrlKey && e.key === 'K')) {
+                    e.preventDefault();
+                    searchInput.focus();
+                    if (shortcutNotifSpan) {
+                        shortcutNotifSpan.innerText = '🔎 Ctrl+K fokus pencarian';
+                        setTimeout(() => shortcutNotifSpan.innerText = '', 1500);
+                    }
+                }
+                if (e.key === 'Escape') {
+                    if (searchInput.value !== '') {
+                        searchInput.value = '';
+                        filterKategori();
+                        if (shortcutNotifSpan) {
+                            shortcutNotifSpan.innerText = '⌨️ Pencarian dibersihkan (ESC)';
+                            setTimeout(() => shortcutNotifSpan.innerText = '', 1200);
+                        }
+                    } else {
+                        searchInput.blur();
+                    }
+                }
+            });
+
+            // Animasi fade-in card
+            kategoriCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+
+            // Hapus override href - biarkan href dari HTML yang sudah ditentukan
+            // Tidak perlu mengubah href lagi karena sudah benar di HTML
+
+            console.log('✅ Noxa Store | Dashboard - 4 kategori, klik card untuk navigasi');
+            console.log('📁 File tujuan: mapel.html, b.pemrograman.html, novel.html, Quotes.html');
+        })();
+    </script>
+</body>
+
+</html>
